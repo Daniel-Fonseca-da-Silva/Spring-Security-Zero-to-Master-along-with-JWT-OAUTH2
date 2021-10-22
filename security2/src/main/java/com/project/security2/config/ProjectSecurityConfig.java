@@ -7,26 +7,43 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 	
+	// Custom configuration
 	//	This don't working with postman! only browser!
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 //        http.authorizeRequests()
-//	        .antMatchers("/myAccount").authenticated()
-//	        .antMatchers("/myBalance").authenticated()
-//	        .antMatchers("/myLoans").authenticated()
-//	        .antMatchers("/myCards").authenticated()
-//	        .antMatchers("/notices").permitAll()
-//	        .antMatchers("/contact").permitAll()
+//	      .antMatchers("/myAccount").authenticated()
+//	      .antMatchers("/myBalance").authenticated()
+//	      .antMatchers("/myLoans").authenticated()
+//	      .antMatchers("/myCards").authenticated()
+//	      .antMatchers("/notices").permitAll()
+//	      .antMatchers("/contact").permitAll()
 //        .and()
 //        .formLogin()
 //        .and()
 //        .httpBasic();
+
+//    	// Configuration to deny all requests
+//    	http 
+//    	.authorizeRequests()
+//    	.anyRequest().
+//    	denyAll()
+//    	.and()
+//    	.formLogin()
+//    	.and() 
+//    	.httpBasic();
     	
-    	http .authorizeRequests()
-    	.anyRequest().denyAll()
+    	
+    	// Configuration to permit all requests
+    	http 
+    	.authorizeRequests()
+    	.anyRequest().
+    	permitAll()
     	.and()
-    	.formLogin().and() .httpBasic();
+    	.formLogin()
+    	.and() 
+    	.httpBasic();
     	
     }
 	
